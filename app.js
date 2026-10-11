@@ -29,6 +29,10 @@ const CONFIG = {
   colors: { background:"#F8FBFD", surface:"#FFFFFF", ink:"#0B2540", muted:"#5B6B7A", accent:"#0369A1", hover:"#075985", soft:"#E8F4FA", border:"#E1ECF3" }
 };
 const $ = (s, root=document) => root.querySelector(s);
+const cssKeys = {background:"--bg",surface:"--surface",ink:"--ink",muted:"--muted",accent:"--accent",hover:"--hover",soft:"--soft",border:"--line"};
+Object.entries(CONFIG.colors).forEach(([key,value]) => { if (cssKeys[key]) document.documentElement.style.setProperty(cssKeys[key], value); });
+const eyebrow = $(".hero .eyebrow");
+if (eyebrow) eyebrow.textContent = CONFIG.tagline;
 document.querySelectorAll("[data-name]").forEach(el => el.textContent = CONFIG.name);
 document.querySelectorAll("[data-phone]").forEach(el => el.textContent = CONFIG.phoneDisplay);
 document.querySelectorAll("[data-address]").forEach(el => el.textContent = CONFIG.address);
